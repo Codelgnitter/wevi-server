@@ -21,14 +21,13 @@ class readDataPoints implements ShouldQueue
         array('waermepumpe', 'wirkleistung', 'energie/waermepumpe/wirkleistung/gesamt'),
         array('methanisierung', 'wirkleistung', 'energie/methanisierung/wirkleistung/gesamt'),
         array('photovoltaik', 'wirkleistung', 'energie/photovoltaik/wirkleistung/gesamt'),
-        array('aussenfuehler', 'temperatur', 'heizung/aussenfuehler/norden/temperatur'),
-        array('aussenfuehler', 'temperatur', 'heizung/aussenfuehler/sueden/temperatur'),
-        array('kaelte', 'temperatur', 'kaelte/speicher/unten/temperatur'),
-        array('kaelte', 'temperatur', 'kaelte/speicher/mitte/temperatur'),
-        array('kaelte', 'temperatur', 'kaelte/speicher/oben/temperatur'),
+        array('aussenfuehler_norden', 'temperatur', 'heizung/aussenfuehler/norden/temperatur'),
+        array('aussenfuehler_sueden', 'temperatur', 'heizung/aussenfuehler/sueden/temperatur'),
+        array('kaelte_unten', 'temperatur', 'kaelte/speicher/unten/temperatur'),
+        array('kaelte_mitte', 'temperatur', 'kaelte/speicher/mitte/temperatur'),
+        array('kaelte_oben', 'temperatur', 'kaelte/speicher/oben/temperatur'),
         array('bhkw', 'oel', 'bhkw/oel'),
         array('raumluft', 'co2', 'raumluft/gas/elektrolyse/co2'),
-        array('photovoltaik', 'wirkleistung', 'photovoltaik/wirkleistung'),
         array('elektroauto', 'ladezeit', 'elektroauto/ladestation/ladezeit'),
         array('elektroauto', 'ev-status', 'elektroauto/ladestation/ladezeit'),
         array('speicher4', 'anforderung', 'speicher/4/anforderung')
@@ -62,27 +61,30 @@ class readDataPoints implements ShouldQueue
         );
         $context = stream_context_create($opts);
 
-        // read all datapoints
-        foreach ($this->datapoints as $dp) {
-            $station = $dp[0];
-            $key = $dp[1];
-            $url = $dp[2];
+        while(1) {
 
-            try {
-                // Open the file using the HTTP headers set above
-                $json_data = file_get_contents($base_url.$url, false, $context);
-                $data = json_decode($json_data, true);
+            // read all datapoints
+            foreach ($this->datapoints as $dp) {
+                $station = $dp[0];
+                $key = $dp[1];
+                $url = $dp[2];
 
-                print_r($station.':'.$key.':'.$data['value'].'\r\n');
+                try {
+                    // Open the file using the HTTP headers set above
+                    $json_data = file_get_contents($base_url.$url, false, $context);
+                    $data = json_decode($json_data, true);
 
-                // add database entry
-                datapoint::create(['station' => $station,
-                                   'key' => $key,
-                                   'value' => $data['value'],
-                                   'data_timestamp' => $data['timestamp']]);
+                    print($station.":".$key.":".$data['value']."\n");
 
-            } catch (Exception $e) {
-                print('error while requesting data: '.$e->getMessage()."\n");
+                    // add database entry
+                    datapoint::create(['station' => $station,
+                                       'key' => $key,
+                                       'value' => $data['value'],
+                                       'data_timestamp' => $data['timestamp']]);
+
+                } catch (Exception $e) {
+                    print('error while requesting data: '.$e->getMessage()."\n");
+                }
             }
         }
     }
