@@ -18,7 +18,7 @@ class CreateDatapointsTable extends Migration
             $table->string('station');
             $table->string('key');
             $table->double('value');
-            $table->integer('data_timestamp');
+            $table->double('data_timestamp');
             $table->timestamps();
         });
     }
