@@ -1,2 +1,2 @@
 # wevi-server
-Backend for web virtualization for "what the data hackathon"
+PHP backend for web virtualization (Laravel 5)
