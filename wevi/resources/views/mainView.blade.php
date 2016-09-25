@@ -106,8 +106,8 @@
               <td> {{$methanisierung_WL}} W</td>
             </tr>
             <tr>
-              <td>BHKW Öl</td>
-              <td> {{$bhkw_oel}} L</td>
+              <td>Außenfühler Süden</td>
+              <td> {{$aussenfuehler_s}} °C</td>
             </tr>
             <tr>
               <td>Raumluft CO2 Methanisierung </td>

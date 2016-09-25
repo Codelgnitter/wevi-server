@@ -78,14 +78,20 @@
                     Plots
                   </div>
 
-<div>
+              <div>
                 <canvas id="hausanschluss_WL" width="600" height="300">
                 </div>
                 <br>
-<div>
+              <div>
                 <canvas id="pv_wl" width="600" height="300">
 
-</div>
+              </div>
+
+              <div>
+                <canvas id="sued" width="600" height="300">
+
+              </div>
+
 
 
 
@@ -230,6 +236,71 @@
                         }
                     }
                 });
+
+                var ctx3 = document.getElementById('sued').getContext('2d');
+                var scatterChart = new Chart(ctx3, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'Temperaturverlauf Sensor Süd',
+                            data: [{
+                                x: 1,
+                                y: {{$aussenfuehler_s[100]['value']}}
+                            }, {
+                                x: 2,
+                                y: {{$aussenfuehler_s[90]['value']}}
+                            }, {
+                                x: 3,
+                                y: {{$aussenfuehler_s[80]['value']}}
+                            }, {
+                                x: 4,
+                                y: {{$aussenfuehler_s[70]['value']}}
+                            }, {
+                                x: 5,
+                                y: {{$aussenfuehler_s[60]['value']}}
+                            }, {
+                                x: 6,
+                                y: {{$aussenfuehler_s[50]['value']}}
+                            }, {
+                                x: 7,
+                                y: {{$aussenfuehler_s[40]['value']}}
+                              }, {
+                                x: 8,
+                                y: {{$aussenfuehler_s[30]['value']}}
+                            }, {
+                                x: 9,
+                                y: {{$aussenfuehler_s[20]['value']}}
+                            }, {
+                                x: 10,
+                                y: {{$aussenfuehler_s[10]['value']}}
+                            }, {
+                                x: 11,
+                                y: {{$aussenfuehler_s[0]['value']}}
+
+                            }]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                type: 'linear',
+                                position: 'bottom'
+                            }],
+                            yAxes: [{
+                              display: true,
+                              ticks: {
+                                  suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                                  // OR //
+                                  beginAtZero: true,   // minimum value will be 0.
+                                   max: 30
+                                }
+                            }]
+                        }
+                    }
+                });
+
+
+
 </script>
 
 
