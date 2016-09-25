@@ -74,22 +74,33 @@
             @endif
 
             <div class="content">
+              <div>
+                <br></br>  <br></br>  <br></br>
+              </div>
                 <div class="title m-b-md">
                     Plots
                   </div>
+                <div>
+                    <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>  <br></br>
+                  <br>
+                  <br>
+                <br>
+                  <br>
+                                    </div>
 
               <div>
                 <canvas id="hausanschluss_WL" width="600" height="300">
+                  <br></br>
                 </div>
-                <br>
+
               <div>
                 <canvas id="pv_wl" width="600" height="300">
-
+<br></br>
               </div>
 
               <div>
                 <canvas id="sued" width="600" height="300">
-
+<br></br>
               </div>
 
 
@@ -230,7 +241,7 @@
                                   suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
                                   // OR //
                                   beginAtZero: true,   // minimum value will be 0.
-                                   max: 16000
+                                   max: 25000
                                 }
                             }]
                         }
