@@ -75,41 +75,161 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel blllaaaaa
+                    Plots
+                  </div>
+
+<div>
+                <canvas id="hausanschluss_WL" width="600" height="300">
                 </div>
+                <br>
+<div>
+                <canvas id="pv_wl" width="600" height="300">
 
-                <canvas id="daily-reports" width="600" height="300"></canvas>
+</div>
 
 
-               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js">
-                var ctx = document.getElementById('daily-reports').getContext('2d');
 
+                <script type="text/javascript" src="{{ URL::asset('js/Chart.js') }}"></script>
+
+                <script>
+
+{{$photovoltaik_WL[1]['value']}}
+
+
+                var ctx = document.getElementById('pv_wl').getContext('2d');
                 var scatterChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Scatter Dataset',
-                        data: [{
-                            x: -10,
-                            y: 0
-                        }, {
-                            x: 0,
-                            y: 10
-                        }, {
-                            x: 10,
-                            y: 5
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'Photovoltaik Wirkleistung gesamt',
+                            data: [{
+                                x: 1,
+                                y: (-1)*{{$photovoltaik_WL[13]['value']}}
+                            }, {
+                                x: 2,
+                                y: (-1)*{{$photovoltaik_WL[12]['value']}}
+                            }, {
+                                x: 3,
+                                y: (-1)*{{$photovoltaik_WL[11]['value']}}
+                            }, {
+                                x: 4,
+                                y: (-1)*{{$photovoltaik_WL[10]['value']}}
+                            }, {
+                                x: 5,
+                                y: (-1)*{{$photovoltaik_WL[9]['value']}}
+                            }, {
+                                x: 6,
+                                y: (-1)*{{$photovoltaik_WL[8]['value']}}
+                            }, {
+                                x: 7,
+                                y: (-1)*{{$photovoltaik_WL[7]['value']}}
+                              }, {
+                                x: 8,
+                                y: (-1)*{{$photovoltaik_WL[6]['value']}}
+                            }, {
+                                x: 9,
+                                y: (-1)*{{$photovoltaik_WL[5]['value']}}
+                            }, {
+                                x: 10,
+                                y: (-1)*{{$photovoltaik_WL[4]['value']}}
+                            }, {
+                                x: 11,
+                                y: (-1)*{{$photovoltaik_WL[3]['value']}}
+                            }, {
+                                x: 12,
+                                y: (-1)*{{$photovoltaik_WL[2]['value']}}
+                            }, {
+                                x: 13,
+                                y: (-1)*{{$photovoltaik_WL[1]['value']}}
+                            }]
                         }]
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            type: 'linear',
-                            position: 'bottom'
-                        }]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                type: 'linear',
+                                position: 'bottom'
+                            }],
+                            yAxes: [{
+                              display: true,
+                              ticks: {
+                                  suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                                  // OR //
+                                  beginAtZero: true,   // minimum value will be 0.
+                                   max: 10000
+                                }
+                            }]
+                        }
                     }
-                }
-            });
+                });
+
+
+                var ctx2 = document.getElementById('hausanschluss_WL').getContext('2d');
+                var scatterChart = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'Hausanschluss Wirkleistung gesamt',
+                            data: [{
+                                x: 1,
+                                y: {{$hausanschluss_WL[13]['value']}}
+                            }, {
+                                x: 2,
+                                y: {{$hausanschluss_WL[12]['value']}}
+                            }, {
+                                x: 3,
+                                y: {{$hausanschluss_WL[11]['value']}}
+                            }, {
+                                x: 4,
+                                y: {{$hausanschluss_WL[10]['value']}}
+                            }, {
+                                x: 5,
+                                y: {{$hausanschluss_WL[9]['value']}}
+                            }, {
+                                x: 6,
+                                y: {{$hausanschluss_WL[8]['value']}}
+                            }, {
+                                x: 7,
+                                y: {{$hausanschluss_WL[7]['value']}}
+                              }, {
+                                x: 8,
+                                y: {{$hausanschluss_WL[6]['value']}}
+                            }, {
+                                x: 9,
+                                y: {{$hausanschluss_WL[5]['value']}}
+                            }, {
+                                x: 10,
+                                y: {{$hausanschluss_WL[4]['value']}}
+                            }, {
+                                x: 11,
+                                y: {{$hausanschluss_WL[3]['value']}}
+                            }, {
+                                x: 12,
+                                y: {{$hausanschluss_WL[2]['value']}}
+                            }, {
+                                x: 13,
+                                y: {{$hausanschluss_WL[1]['value']}}
+                            }]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                type: 'linear',
+                                position: 'bottom'
+                            }],
+                            yAxes: [{
+                              display: true,
+                              ticks: {
+                                  suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                                  // OR //
+                                  beginAtZero: true,   // minimum value will be 0.
+                                   max: 16000
+                                }
+                            }]
+                        }
+                    }
+                });
 </script>
 
 

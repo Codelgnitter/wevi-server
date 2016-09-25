@@ -19,4 +19,4 @@ Route::get('/collect/http', 'DataLogController@collectHttp');
 Route::get('/collect/mqtt', 'DataLogController@collectMqtt');
 Route::get('/mqtt', 'DataLogController@mqttclient');
 Route::get('/main/current', 'MainViewController@current');
-Route::get('/charts', 'chartContrtoller@chart');
+Route::get('/charts', 'chartController@chart'); 
