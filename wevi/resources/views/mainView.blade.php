@@ -73,29 +73,51 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content", style="font-size:18pt; color: #222222;">
+<div align="left">
+          <table >
+            <tr>
+              <td>Photovoltaik WL</td>
+              <td>  {{$photovoltaik_WL}} W</td>
+            </tr>
+            <tr>
+              <td>Hausanschluss WL</td>
+              <td>  {{$hausanschluss_WL}} W</td>
 
-                    Laravel blaaaa <br>
-                    {{$bhkw_WL}}<br>
-                    {{$photovoltaik_WL}}<br>
-                    {{$hausanschluss_WL}}<br>
-                    {{$kaelte_WL}}<br>
-                    {{$elektrolyse_WL}}<br>
-                    {{$waermepumpe_WL}}<br>
-                    {{$methanisierung_WL}}<br>
-                    {{$bhkw_oel}}<br>
-                    {{$raumluft_co2}}<br>
+            </tr>
+            <tr>
+              <td>BHKW WL</td>
+              <td>  {{$bhkw_WL}} W</td>
+            </tr>
+            <tr>
+              <td>Kaelte WL</td>
+              <td>        {{$kaelte_WL}} W</td>
+            </tr>
+            <tr>
+              <td>Elektrolyse WL</td>
+              <td> {{$elektrolyse_WL}} W</td>
+            </tr>
+            <tr>
+              <td>Wärmepumpe WL</td>
+              <td>    {{$waermepumpe_WL}} W</td>
+            </tr>
+            <tr>
+              <td>Mehtanisierung Wl</td>
+              <td> {{$methanisierung_WL}} W</td>
+            </tr>
+            <tr>
+              <td>BHKW Öl</td>
+              <td> {{$bhkw_oel}} L</td>
+            </tr>
+            <tr>
+              <td>Raumluft CO2 Methanisierung </td>
+              <td>  {{$raumluft_co2}} ppm<br></td>
+            </tr>
+          </table>
 
 
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
+          </div>
         </div>
         </div>
 
